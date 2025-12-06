@@ -100,8 +100,8 @@ gsap.to(model.scene.position,{
 
 gsap.to(model.scene.rotation,{
   duration:2,
-  x:-0.5,
-  y:5,
+  x:-0.2,
+  y:2.2,
   // z:5
 })
 
@@ -118,9 +118,9 @@ error=>{
 
 // controls +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const control = new OrbitControls(camera,canvasElement);
+// const control = new OrbitControls(camera,canvasElement);
 
-control.update()
+// control.update()
 
 
 // -----------------------------------------------------------------controls
@@ -142,7 +142,7 @@ function animate(){
 
     
     // console.log(eTime , clock.getDelta());
-control.update(clock.getDelta())
+// control.update(clock.getDelta())
 
 
     // camera.lookAt(new THREE.Vector3(0,0,0))
