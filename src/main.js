@@ -90,7 +90,16 @@ const TXLoader = new THREE.TextureLoader()
 glbLoader.load('/models/iphone_16_pro_max.glb',
   model=>{
   console.log(model)
-  scene.add(model.scene);
+  
+
+  gsap.to('div.loading',{
+    duration:1,
+    opacity:0,
+    onComplete:()=>{
+      document.querySelector('div.loading').remove();
+      scene.add(model.scene);
+    }
+  })
 
   const tl = gsap.timeline();
 gsap.to(model.scene.position,{
