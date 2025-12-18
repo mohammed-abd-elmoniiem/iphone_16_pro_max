@@ -36,7 +36,7 @@ const canvasSize ={
 // intialize scene ,camera , renderer++++++++++++++++++++++++++++++++++++++++++
 
 const scene = new THREE.Scene()
-scene.fog = new THREE.Fog(0x888888,1,30)
+// scene.fog = new THREE.Fog(0xffffff,0.1,10)
 // scene.overrideMaterial = new THREE.MeshDepthMaterial()
 
  const frutm = 20
@@ -92,7 +92,10 @@ glbLoader.load('/models/iphone_16_pro_max.glb',
   console.log(model)
   
 
-  gsap.to('div.loading',{
+
+  const tl = gsap.timeline();
+
+tl.to('div.loading',{
     duration:1,
     opacity:0,
     onComplete:()=>{
@@ -100,19 +103,38 @@ glbLoader.load('/models/iphone_16_pro_max.glb',
       scene.add(model.scene);
     }
   })
+tl.to(model.scene.position,{
+  duration:2,
+  z:3
+})
 
-  const tl = gsap.timeline();
-gsap.to(model.scene.position,{
+  
+tl.to(model.scene.rotation,{
+  duration:4,
+  
+  y:Math.PI*2,
+  // z:5
+})
+
+tl.to(model.scene.rotation,{
+  duration:4,
+
+  z:Math.PI *0.5,
+  // z:5
+})
+
+
+tl.to(model.scene.rotation,{
+  duration:4,
+  
+  x:Math.PI*2,
+  // z:5
+})
+tl.to(model.scene.position,{
   duration:2,
   z:5
 })
 
-gsap.to(model.scene.rotation,{
-  duration:2,
-  x:-0.2,
-  y:2.2,
-  // z:5
-})
 
 }
 ,process=>{
